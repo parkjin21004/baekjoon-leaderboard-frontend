@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+    --color-cheryblue: #5471ff;
+    --color-subblue: #6f87ff;
+    --color-subblue-100: #f5f7ff;
+    --color-subblue-200: #e6ebff;
+    --color-subblue-300: #aab9ff;
+    --color-lightgray: #dcdcdc;
+
+    --font-dohyeon: "BMDOHYEON";
+}
+
+@font-face {
+    font-family: "BMDOHYEON";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
