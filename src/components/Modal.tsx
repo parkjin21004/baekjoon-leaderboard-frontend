@@ -11,7 +11,7 @@ function Modal({ team }: { team: Team }) {
         };
     }, []);
 
-    const { detail, loading, error } = useDetail(team.team_id);
+    const { detail, loading, error } = useDetail(team.teamId);
 
     if (loading) return <p>불러오는 중...</p>;
     if (error) return <p>에러 발생: {error.message}</p>;
@@ -32,7 +32,7 @@ function Modal({ team }: { team: Team }) {
                         )}
                         <div className="flex w-86 items-center gap-4">
                             <h1 className="font-dohyeon truncate text-3xl">
-                                {team.team_name}
+                                {team.teamName}
                             </h1>
                             <h1 className="font-dohyeon text-3xl">{`(+${team.gain})`}</h1>
                         </div>
@@ -42,7 +42,7 @@ function Modal({ team }: { team: Team }) {
                         <img src={`/assets/team.svg`} width={60}></img>
                         {detail.members.map((member, index) => (
                             <h2 key={index} className="font-dohyeon text-xl">
-                                {`${member.boj_id} (${member.entrance_year} ${member.name})`}
+                                {`${member.bojId} (${member.entranceYear} ${member.name})`}
                             </h2>
                         ))}
                     </div>
@@ -51,7 +51,7 @@ function Modal({ team }: { team: Team }) {
             <div className="bg-subblue-100 border-subblue-300 h-135 w-full rounded-lg border-4 p-4">
                 <div className="h-full w-full items-center justify-center">
                     <TeamRatingChart
-                        data={detail.daily_ratings}
+                        data={detail.dailyRatings}
                     ></TeamRatingChart>
                 </div>
             </div>

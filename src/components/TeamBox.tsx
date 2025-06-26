@@ -17,7 +17,7 @@ function TeamBox({ team }: { team: Team }) {
                 </div>
                 <div className="flex w-86 items-center gap-4">
                     <h1 className="font-dohyeon truncate text-3xl">
-                        {team.team_name}
+                        {team.teamName}
                     </h1>
                     <h1 className="font-dohyeon text-3xl">{`(+${team.gain})`}</h1>
                 </div>

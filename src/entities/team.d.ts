@@ -1,6 +1,6 @@
 export interface Team {
-    team_id: number;
-    team_name: string;
+    teamId: number;
+    teamName: string;
     gain: number;
     order: number;
     members: Member[];
@@ -8,6 +8,6 @@ export interface Team {
 
 interface Member {
     name: string;
-    boj_id: string;
+    bojId: string;
     tier: number;
 }

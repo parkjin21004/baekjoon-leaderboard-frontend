@@ -1,15 +1,15 @@
 export interface Detail {
     id: number;
     members: MemberDetail[];
-    daily_ratings: DailyRating[];
+    dailyRatings: DailyRating[];
 }
 
 interface MemberDetail {
     name: string;
-    boj_id: string;
+    bojId: string;
     gain: number;
     rating: number;
-    entrance_year: number;
+    entranceYear: number;
     tier: number;
 }
 
