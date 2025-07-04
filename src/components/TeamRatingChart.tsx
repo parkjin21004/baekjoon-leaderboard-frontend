@@ -52,14 +52,14 @@ function TeamRatingChart({ data }: { data: DailyRating[] }) {
                     yAxisKey: "y",
                 },
                 borderColor: "rgba(255, 216, 51, 1)",
-                tension: 0.3,
+                tension: 0,
                 spanGaps: false,
             },
         ],
     };
 
     const options = {
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         plugins: {
             legend: { display: false },
             tooltip: {
