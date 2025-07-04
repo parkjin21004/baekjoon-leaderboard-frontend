@@ -11,6 +11,31 @@
     --font-dohyeon: "BMDOHYEON";
 }
 
+@theme {
+    --color-tier-none: #2d2d2d;
+    --color-tier-bronze: #ad5600;
+    --color-tier-silver: #435f7a;
+    --color-tier-gold: #ec9a00;
+    --color-tier-platinum: #27e2a4;
+    --color-tier-diamond: #00b4fc;
+    --color-tier-ruby: #ff0062;
+    --gradient-tier-master: 180deg, #7cf9ff 0%, #b491ff 50%, #ff7ca8 100%;
+}
+
+@layer utilities {
+    .bg-tier-master {
+        background-image: linear-gradient(var(--gradient-tier-master));
+    }
+}
+
+@source inline("bg-tier-{none,bronze,silver,gold,platinum,diamond,ruby,master}");
+@source inline("outline-tier-{none,bronze,silver,gold,platinum,diamond,ruby,master}");
+
+@theme {
+    --breakpoint-xs: 22.5rem;
+    --text-tiny: 0.625rem;
+}
+
 @font-face {
     font-family: "BMDOHYEON";
     src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff")
