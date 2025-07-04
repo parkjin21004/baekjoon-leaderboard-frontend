@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import type { Detail } from "../entities/detail";
 import api from "./axios";
+import type { AxiosError } from "axios";
 
 export function useDetail(id: number) {
     const [detail, setDetail] = useState<Detail | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<Error | null>(null);
+    const [error, setError] = useState<AxiosError | null>(null);
 
     useEffect(() => {
         api.get(`/detail/${id}`)
