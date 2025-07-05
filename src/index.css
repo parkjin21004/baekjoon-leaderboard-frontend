@@ -6,7 +6,9 @@
     --color-subblue-100: #f5f7ff;
     --color-subblue-200: #e6ebff;
     --color-subblue-300: #aab9ff;
-    --color-lightgray: #dcdcdc;
+    --color-lightgrey: #dcdcdc;
+    --color-middlegrey: #909398;
+    --color-darkgrey: #292c34;
 
     --font-dohyeon: "BMDOHYEON";
 }

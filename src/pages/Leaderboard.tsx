@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { lazy, useState } from "react";
 import { useTeams } from "../api/useTeams";
-import TeamBox from "../components/TeamBox";
-import Modal from "../components/Modal";
 import { AnimatePresence, motion } from "motion/react";
 import type { Team } from "../entities/team";
 import { createPortal } from "react-dom";
 import Spinner from "../components/Spinner";
 import ErrorDialog from "../components/ErrorDialog";
+
+const TeamBox = lazy(() => import("../components/TeamBox"));
+const Modal = lazy(() => import("../components/Modal"));
 
 function Leaderboard() {
     const { teams, loading, error } = useTeams();
@@ -63,7 +64,12 @@ function Leaderboard() {
                                     setSelectedTeam(null);
                                 }}
                             >
-                                <Modal team={selectedTeam}></Modal>
+                                <Modal
+                                    team={selectedTeam}
+                                    onClick={() => {
+                                        setSelectedTeam(null);
+                                    }}
+                                ></Modal>
                             </motion.div>
                         </div>
                     )}
