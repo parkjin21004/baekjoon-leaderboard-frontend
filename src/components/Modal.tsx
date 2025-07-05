@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { useDetail } from "../api/useDetail";
 import type { Team } from "../entities/team";
-import TeamRatingChart from "./TeamRatingChart";
 import Spinner from "./Spinner";
 import ErrorDialog from "./ErrorDialog";
+import CloseButton from "./CloseButton";
 
-function Modal({ team }: { team: Team }) {
+const TeamRatingChart = lazy(() => import("./TeamRatingChart"));
+
+function Modal({ team, onClick }: { team: Team; onClick: () => void }) {
     useEffect(() => {
         document.body.classList.add("overflow-hidden");
         return () => {
@@ -22,27 +24,35 @@ function Modal({ team }: { team: Team }) {
         >
             <div className="bg-subblue-200 border-subblue-300 h-full w-full items-center justify-center rounded-lg border-4 p-2 sm:p-4">
                 <div className="flex flex-col gap-2">
-                    <div className="flex w-full flex-row gap-2 sm:gap-6 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
-                        {team.order <= 3 ? (
-                            <img
-                                src={`/assets/medal${team.order}.svg`}
-                                className="xs:w-[30px] sm:[40px] w-[20px] md:w-[40px] lg:w-[50px] xl:w-[60px]"
-                            ></img>
-                        ) : (
-                            <h1 className="font-dohyeon whitespace-nowrap">{`${team.order}위`}</h1>
-                        )}
-                        <div className="flex w-full items-center gap-2 sm:gap-4">
-                            <h1 className="font-dohyeon truncate">
-                                {team.teamName}
-                            </h1>
-                            <h1 className="font-dohyeon">{`(${team.gain >= 0 ? `+${team.gain}` : `${team.gain}`})`}</h1>
+                    <div className="flex w-full flex-row justify-between">
+                        <div className="flex w-full flex-row gap-2 sm:gap-6 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+                            {team.order <= 3 ? (
+                                <img
+                                    src={`assets/medal${team.order}.svg`}
+                                    className="xs:w-[30px] sm:[40px] w-[20px] md:w-[40px] lg:w-[50px] xl:w-[60px]"
+                                ></img>
+                            ) : (
+                                <h1 className="font-dohyeon whitespace-nowrap">{`${team.order}위`}</h1>
+                            )}
+                            <div className="flex w-full items-center gap-2 sm:gap-4">
+                                <h1 className="font-dohyeon truncate">
+                                    {team.teamName}
+                                </h1>
+                                <h1 className="font-dohyeon">{`(${team.gain >= 0 ? `+${team.gain}` : `${team.gain}`})`}</h1>
+                            </div>
+                        </div>
+                        <div>
+                            <CloseButton
+                                className="xs:w-[30px] sm:[40px] fill-middlegrey hover:fill-darkgrey w-[20px] transition-colors md:w-[40px] lg:w-[50px] xl:w-[60px]"
+                                onClick={onClick}
+                            ></CloseButton>
                         </div>
                     </div>
                     <div className={`${!detail ? "hidden" : ""}`}>
                         <div className={`bg-subblue-300 h-1 w-full`}></div>
                         <div className="flex flex-row items-center gap-2 text-xs sm:text-sm md:text-base lg:gap-4 lg:text-lg xl:text-xl">
                             <img
-                                src={`/assets/team.svg`}
+                                src={`assets/team.svg`}
                                 className="xs:w-[30px] sm:[40px] w-[20px] md:w-[40px] lg:w-[50px] xl:w-[60px]"
                             ></img>
                             {detail &&
@@ -68,7 +78,7 @@ function Modal({ team }: { team: Team }) {
                     </div>
                 </div>
             </div>
-            <div className="bg-subblue-100 border-subblue-300 h-full w-full flex-none overflow-x-auto overflow-y-hidden rounded-lg border-4 p-4">
+            <div className="bg-subblue-100 border-subblue-300 h-full w-full flex-none overflow-x-auto overflow-y-hidden rounded-lg border-4 p-4 xl:flex xl:justify-center">
                 {loading && (
                     <div className="flex h-[50vh] w-[70vw] items-center justify-center">
                         <Spinner></Spinner>
